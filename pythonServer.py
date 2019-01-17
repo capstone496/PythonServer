@@ -1,13 +1,14 @@
-import socket               # Import socket module
+import socket
 import datetime
+import time
+
 
 s = socket.socket()         # Create a socket object
-host = '192.168.1.109' # Get local machine name
-port = 5000                # Reserve a port for your service.
+host = '100.65.202.107'      # Get local machine name
+port = 5000                 # Reserve a port for your service.
 s.bind((host, port))        # Bind to the port
 print(host)
 s.listen(5)                 # Now wait for client connection.
-
 
 while True:
     c, address = s.accept()  # Establish connection with client.
@@ -18,21 +19,25 @@ while True:
         print("receiving text", data)
         text = c.recv(1024)
         print(text)
-        c.send(b'1')
+        c.send(b'2')
 
     data = c.recv(1024)
-    c.send(b'1')
+    c.send(b'3')
     if data:
-        print("receiving audio", data)
-        audio = c.recv(1024)
         fileName = datetime.datetime.now().strftime("%I_%M_%B_%d_%Y")
         audioFile = open(fileName + ".wav", 'wb')
+        print("receiving audio", data)
+        audio = c.recv(1024)
         while audio:
             audioFile.write(audio)
             audio = c.recv(1024)
-        print("done receiving")
         audioFile.close()
-    c.send(b'Done receiving') #send label back
+    c.close()
+    time.sleep(2)
+    c, address = s.accept()  # Establish connection with client.
+    print('Got connection from', address)  # run algorithm
+    print("done receiving")
+    c.send(b'hihihi4.')
     #call algorithm
     #c.send(b'1') #send label
-    c.close()                           # Close the connection
+                               # Close the connection
