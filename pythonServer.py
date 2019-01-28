@@ -1,11 +1,11 @@
-import socket
 import datetime
+import socket
+import sys
 import time
 
-
 s = socket.socket()         # Create a socket object
-host = '100.65.202.107'      # Get local machine name
-port = 5000                 # Reserve a port for your service.
+host = sys.argv[1]      # Get local machine name
+port = 6006                 # Reserve a port for your service.
 s.bind((host, port))        # Bind to the port
 print(host)
 s.listen(5)                 # Now wait for client connection.
