@@ -3,11 +3,12 @@ import socket
 import sys
 import time
 
-from .serve_prediction import predict, get_tensors_for_prediction, spectrogram, graph_file, LABELS
+from serve_prediction import predict, get_tensors_for_prediction, spectrogram, graph_file, LABELS
 
 s = socket.socket()         # Create a socket object
-host = sys.argv[1]      # Get local machine name
-port = 6006                 # Reserve a port for your service.
+host = sys.argv[1]          # Get local machine name
+port = 6300                 # Reserve a port for your service.
+
 s.bind((host, port))        # Bind to the port
 print(host)
 s.listen(5)                 # Now wait for client connection.
@@ -47,8 +48,9 @@ while True:
     predicted_emotion = predict(graph,
                                 image_buffer_input,
                                 prediction,
-                                keep_prob, 
+                                keep_prob,
                                 spectrogram(audio_filename))
-    c.send(LABELS[predicted_emotion] + '.')
+    print(LABELS[predicted_emotion])
+    c.send(LABELS[predicted_emotion])
 
     c.close()

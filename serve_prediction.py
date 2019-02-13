@@ -145,7 +145,7 @@ Run prediction
 ===========================================================================
 """
 LABELS = dict(zip(range(8),
-                  ['neutral', 'calm', 'happy', 'sad', 'angry', 'fearful', 'disgust', 'surprised']))
+                  [b'neutral.', b'calm.', b'happy.', b'sad.', b'angry.', b'fearful.', b'disgust.', b'surprised.']))
 
 
 def run_prediction(graph_file, audio_file):
