@@ -144,6 +144,7 @@ def spectrogram(audio_file):
 Run prediction
 ===========================================================================
 """
+
 LABELS = dict(zip(range(8),
                   [b'neutral.', b'calm.', b'happy.', b'sad.', b'angry.', b'fearful.', b'disgust.', b'surprised.']))
 
@@ -154,6 +155,6 @@ def run_prediction(graph_file, audio_file):
     return LABELS[pred_index]
 
 
-graph_file = '/Users/catherinehuang/Desktop/CS/ece496/tensorflow-for-poets-2/aud_emo/export/retrained_graph.pb'
+graph_file = 'models/retrained_graph.pb'
 audio = '/Users/catherinehuang/Desktop/CS/ece496/audio_emotion_analysis/processed_at_lvl2/Audio_Speech_Actors_01-24/Actor_24/03-01-08-02-02-02-24-seg0.wav'
 # print(run_prediction(graph, audio))
