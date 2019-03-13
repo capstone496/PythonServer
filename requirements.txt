@@ -1,0 +1,15 @@
+numpy
+pandas
+sklearn
+nltk
+keras
+tensorflow
+tensorflow_hub
+wordcloud
+matplotlib
+scipy
+seaborn
+librosa
+msgpack
+webrtcvad
+
